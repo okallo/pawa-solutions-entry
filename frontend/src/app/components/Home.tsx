@@ -27,7 +27,7 @@ export default function Home() {
     } else {
       setShowSettings(true); // prompt user on first visit
     }
-  }, []);
+  }, [API_URL]);
 
   const handleSaveKey = async () => {
     try {
@@ -35,7 +35,7 @@ export default function Home() {
       localStorage.setItem("OPENAI_API_KEY", keyInput);
       setApiKey(keyInput);
       setShowSettings(false);
-    } catch (err) {
+    } catch {
       alert("Failed to set API key. Please check the format and try again.");
     }
   };
