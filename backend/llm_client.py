@@ -5,7 +5,10 @@ from dotenv import load_dotenv
 load_dotenv()
 
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
-openai.api_key = OPENAI_API_KEY
+def set_api_key(key: str):
+    global OPENAI_API_KEY
+    OPENAI_API_KEY = key
+    openai.api_key = key
 
 
 async def ask_llm(prompt: str) -> str:
