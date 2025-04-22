@@ -1,7 +1,7 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from schemas import QueryRequest, QueryResponse
-from llm_client import ask_llm
+from schemas import QueryRequest, QueryResponse, APIKeyRequest
+from llm_client import ask_llm, set_api_key
 import os
 
 app = FastAPI(
@@ -31,3 +31,14 @@ async def query_llm(data: QueryRequest):
         traceback.print_exc()  # Log full traceback
         raise HTTPException(status_code=500, detail=f"LLM Error: {str(e)}")
 
+@app.post("/set-api-key", summary="Set or update OpenAI API key", tags=["Settings"])
+def update_key(req: APIKeyRequest):
+    if not req.api_key.startswith("sk-"):
+        raise HTTPException(status_code=400, detail="Invalid API key format.")
+    set_api_key(req.api_key)
+    return {"message": "API key set successfully."}
+
+@app.get("/has-api-key", summary="Check if OpenAI API key is set", tags=["Settings"])
+def has_api_key():
+    from llm_client import OPENAI_API_KEY
+    return {"has_key": bool(OPENAI_API_KEY)}
