@@ -4,8 +4,12 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+openai.api_key = OPENAI_API_KEY
+
 
 async def ask_llm(prompt: str) -> str:
+    if not OPENAI_API_KEY:
         return "OpenAI API key is missing. Please check your configuration."
 
     try:
