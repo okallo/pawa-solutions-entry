@@ -1,7 +1,9 @@
+"use client";
+
 import { useState, ChangeEvent } from "react";
 import axios from "axios";
-import { TextArea } from "../components/TextArea";
-import { Loader } from "../components/Loader";
+import { TextArea } from "./components/TextArea";
+import { Loader } from "./components/Loader";
 
 export default function Home() {
   const [query, setQuery] = useState("");
