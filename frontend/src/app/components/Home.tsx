@@ -2,9 +2,7 @@
 
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { TextArea } from "./TextArea";
-import { Loader } from "./Loader";
-import ReactMarkdown from "react-markdown";
+
 import { PreviousQueries } from "./PreviousQueries";
 import { ChatArea } from "./ChatArea";
 import { SettingsModal } from "./SettingsModal";
