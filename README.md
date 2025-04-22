@@ -35,7 +35,8 @@ The app will generate a structured response, for example:
 ```bash
 # Navigate to the backend directory
 cd backend
-
+ # activate the environment
+source venv/Scripts/activate # For Git Bash on Windows
 # Run the FastAPI app with Uvicorn
 uvicorn main:app --reload
 
