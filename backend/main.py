@@ -1,14 +1,14 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from backend.schemas import QueryRequest, QueryResponse
-from backend.llm_client import ask_llm
+from schemas import QueryRequest, QueryResponse
+from llm_client import ask_llm
 import os
 
 app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=["http://localhost:3000"],
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -19,4 +19,7 @@ async def query_llm(data: QueryRequest):
         answer = await ask_llm(data.query)
         return {"response": answer}
     except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+        import traceback
+        traceback.print_exc()  # Log full traceback
+        raise HTTPException(status_code=500, detail=f"LLM Error: {str(e)}")
+
