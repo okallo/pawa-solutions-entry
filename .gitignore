@@ -1,0 +1,32 @@
+# ========================
+# Global
+# ========================
+*.log
+*.env
+.env.*
+__pycache__/
+*.py[cod]
+*.sqlite3
+*.db
+*.DS_Store
+*.swp
+.idea/
+.vscode/
+*.bak
+*.orig
+*.rej
+*.sublime-project
+*.sublime-workspace
+node_modules/
+dist/
+build/
+coverage/
+*.tgz
+*.lock-wscript
+*.yarn-integrity
+
+# ========================
+# Python / FastAPI (backend/)
+# ========================
+backend/__pycache__/
+backend/*.py*
