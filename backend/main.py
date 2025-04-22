@@ -4,7 +4,15 @@ from schemas import QueryRequest, QueryResponse
 from llm_client import ask_llm
 import os
 
-app = FastAPI()
+app = FastAPI(
+    title="Travel Checklist Assistant API",
+    description="Ask travel-related questions and get AI-generated checklists.",
+    version="1.0.0",
+    contact={
+        "name": "Clayne Okallo",
+        "email": "clayne.co25@gmail.com",
+    },
+)
 
 app.add_middleware(
     CORSMiddleware,
