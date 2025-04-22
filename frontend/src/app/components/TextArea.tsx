@@ -1,6 +1,11 @@
 import React from "react";
 
-export const TextArea = ({ value, onChange }: { value: string; onChange: any }) => (
+interface TextAreaProps {
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+}
+
+export const TextArea = ({ value, onChange }: TextAreaProps) => (
   <textarea
     value={value}
     onChange={onChange}
